@@ -1,5 +1,6 @@
 import React from 'react';
 import { CityDetailProvider } from './CityDetailProvider/CityDetailProvider';
+import {Notes} from "./Notes/Notes";
 
 // weather_icons: ["https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png"]
 export const CityDetail = () => {
@@ -37,6 +38,7 @@ export const CityDetail = () => {
                         <div>Wind degree: {wind_degree}</div>
                         <div>Wind dir: {wind_dir}</div>
                         <div>Wind speed: {wind_speed}</div>
+                        <Notes/>
                     </div>
                 </>
             }
