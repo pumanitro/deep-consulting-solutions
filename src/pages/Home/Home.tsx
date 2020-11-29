@@ -1,8 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import * as WeatherStackService from '../../services/WeatherStackService';
 import {CountriesProvider} from "./CountriesProvider/CountriesProvider";
+import _ from 'lodash';
 
-export const Home = () => {
+type CountriesPropsType = {
+    topCountries: any,
+}
+
+export const Countries : FC<CountriesPropsType> = ({topCountries}) => {
+
+    const [countries, setCountries] = useState(topCountries);
 
     useEffect(() => {
         (async () => {
@@ -11,20 +18,27 @@ export const Home = () => {
         })();
     }, [])
 
+    const removeCountry = (name: string) => {
+        setCountries(countries.filter((country: any) => country.location.name !== name));
+    }
+
     return (
-        <CountriesProvider>
+        <>
             {
-                (({topCountries}: any) => {
-                    return  (<>
-                        {
-                            topCountries.map((country: any) => <div key={country.location.name}>
-                                <span>{country.location.name}</span>
-                                <span>{country.current.temperature}</span>
-                            </div>)
-                        }
-                        </>)
-                })
+                _.sortBy(countries, 'location.name').map((country: any) => <div key={country.location.name}>
+                    <span>{country.location.name}</span>
+                    <span>{country.current.temperature}</span>
+                    <button onClick={() => removeCountry(country.location.name)}>Remove</button>
+                </div>)
             }
-        </CountriesProvider>
+        </>
     );
 }
+
+export const Home = () => (
+    <CountriesProvider>
+        {
+            (({topCountries}: any) => <Countries topCountries={topCountries} />)
+        }
+    </CountriesProvider>
+);
