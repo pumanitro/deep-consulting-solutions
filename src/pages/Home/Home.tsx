@@ -15,7 +15,14 @@ export const Home = () => {
         <CountriesProvider>
             {
                 (({topCountries}: any) => {
-                    return <div>{JSON.stringify(topCountries)}</div>
+                    return  (<>
+                        {
+                            topCountries.map((country: any) => <div key={country.location.name}>
+                                <span>{country.location.name}</span>
+                                <span>{country.current.temperature}</span>
+                            </div>)
+                        }
+                        </>)
                 })
             }
         </CountriesProvider>
