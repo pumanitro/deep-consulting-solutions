@@ -2,6 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import * as WeatherStackService from '../../services/WeatherStackService';
 import {CountriesProvider} from "./CountriesProvider/CountriesProvider";
 import _ from 'lodash';
+import {Link} from "react-router-dom";
 
 type CountriesPropsType = {
     topCountries: any,
@@ -26,7 +27,8 @@ export const Countries : FC<CountriesPropsType> = ({topCountries}) => {
         <>
             {
                 _.sortBy(countries, 'location.name').map((country: any) => <div key={country.location.name}>
-                    <span>{country.location.name}</span>
+
+                    <Link to={`city-detail/${country.location.name}`}><span>{country.location.name}</span></Link>
                     <span>{country.current.temperature}</span>
                     <button onClick={() => removeCountry(country.location.name)}>Remove</button>
                 </div>)
