@@ -1,23 +1,20 @@
 import React, { FC } from 'react';
-import {useLocalStorage} from "../../helpers/useLocalStorage";
+import {useFavoriteCities} from "../../globals/FavoritesContext/FavoritesContext";
 
 type FavoritesButtonPropsType = {
     cityName: string;
 }
 
-const FAVORITES_KEY = 'favorites';
-
 export const FavoritesButton: FC<FavoritesButtonPropsType> = ({ cityName }) => {
-    const [favorites, setFavorites] = useLocalStorage(FAVORITES_KEY, window.localStorage.getItem(FAVORITES_KEY) || '[]');
+    const {favorites, setFavorites} = useFavoriteCities();
 
-    const castedFavorites = JSON.parse(favorites);
     const addToFavorites = () => {
-        setFavorites(JSON.stringify([...castedFavorites, cityName]))
+        setFavorites([...favorites, cityName])
     }
     const removeFromFavorites = () => {
-        setFavorites(JSON.stringify(castedFavorites.filter((favourite: string) => favourite !== cityName)));
+        setFavorites(favorites.filter((favourite: string) => favourite !== cityName));
     }
-    const hasCity = !!castedFavorites.find((favourite: string) => favourite === cityName);
+    const hasCity = !!favorites.find((favourite: string) => favourite === cityName);
 
     if(hasCity) {
         return <button onClick={removeFromFavorites}>[FILLED STAR] Remove from favorites</button>
