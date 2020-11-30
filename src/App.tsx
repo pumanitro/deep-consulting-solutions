@@ -1,20 +1,14 @@
 import React from 'react';
-import {Home} from "./pages/Home/Home";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {CityDetail} from "./pages/CityDetail/CityDetail";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {Router} from "./globals/Router/Router";
 
 function App() {
   return (
-      <Router>
-        <Switch>
-          <Route path="/city-detail/:cityName">
-            <CityDetail />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
+      <>
+        <ToastContainer />
+        <Router/>
+      </>
   );
 }
 
