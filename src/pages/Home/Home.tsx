@@ -3,6 +3,7 @@ import {CountriesProvider} from "./CountriesProvider/CountriesProvider";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
 import {CITY_DETAIL} from "../../helpers/appUrls";
+import {FavoritesButton} from "../../components/FavoritesButton/FavoritesButton";
 
 type CountriesPropsType = {
     topCountries: any,
@@ -23,6 +24,7 @@ export const Countries : FC<CountriesPropsType> = ({topCountries}) => {
 
                     <Link to={CITY_DETAIL(country.location.name)}><span>{country.location.name}</span></Link>
                     <span>{country.current.temperature}</span>
+                    <FavoritesButton cityName={country.location.name}/>
                     <button onClick={() => removeCountry(country.location.name)}>Remove</button>
                 </div>)
             }

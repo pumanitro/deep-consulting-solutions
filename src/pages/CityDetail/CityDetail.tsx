@@ -1,9 +1,13 @@
 import React from 'react';
 import { CityDetailProvider } from './CityDetailProvider/CityDetailProvider';
 import {Notes} from "./Notes/Notes";
+import {FavoritesButton} from "../../components/FavoritesButton/FavoritesButton";
+import {useParams} from "react-router-dom";
 
 // weather_icons: ["https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png"]
 export const CityDetail = () => {
+    let { cityName } = useParams<any>();
+
     return <CityDetailProvider>
         {
             ({weatherInfo: {
@@ -25,6 +29,7 @@ export const CityDetail = () => {
             }}: any) => {
                 return <>
                     <div>
+                        <FavoritesButton cityName={cityName}/>
                         <div>Cloud cover:{cloudcover}</div>
                         <div>Feels like: {feelslike}</div>
                         <div>Humidity: {humidity}</div>
