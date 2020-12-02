@@ -5,26 +5,26 @@ import {Link} from "react-router-dom";
 import {CITY_DETAIL} from "../../helpers/appUrls";
 import {FavoritesList} from "./FavoritesList/FavoritesList";
 
-type CountriesPropsType = {
-    topCountries: any,
+type CitiesPropsType = {
+    topCities: any,
 }
 
-export const Countries : FC<CountriesPropsType> = ({topCountries}) => {
+export const Cities : FC<CitiesPropsType> = ({topCities}) => {
 
-    const [countries, setCountries] = useState(topCountries);
+    const [cities, setCities] = useState(topCities);
 
     const removeCountry = (name: string) => {
-        setCountries(countries.filter((country: any) => country.location.name !== name));
+        setCities(cities.filter((country: any) => country.location.name !== name));
     }
 
     return (
         <>
             <FavoritesList />
             {
-                _.sortBy(countries, 'location.name').map((country: any) => <div key={country.location.name}>
-                    <Link to={CITY_DETAIL(country.location.name)}><span>{country.location.name}</span></Link>
-                    <span>{country.current.temperature}</span>
-                    <button onClick={() => removeCountry(country.location.name)}>Remove</button>
+                _.sortBy(cities, 'location.name').map((city: any) => <div key={city.location.name}>
+                    <Link to={CITY_DETAIL(city.location.name)}><span>{city.location.name}</span></Link>
+                    <span>{city.current.temperature}</span>
+                    <button onClick={() => removeCountry(city.location.name)}>Remove</button>
                 </div>)
             }
         </>
@@ -34,7 +34,7 @@ export const Countries : FC<CountriesPropsType> = ({topCountries}) => {
 export const Home = () => (
     <CountriesProvider>
         {
-            (({topCountries}: any) => <Countries topCountries={topCountries} />)
+            (({topCities}: any) => <Cities topCities={topCities} />)
         }
     </CountriesProvider>
 );

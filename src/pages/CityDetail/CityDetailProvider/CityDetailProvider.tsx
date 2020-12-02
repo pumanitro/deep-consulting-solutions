@@ -12,7 +12,7 @@ export const CityDetailProvider: FC<any> = ({children}) => {
             const resp = await WeatherStackService.getCityWeather(cityName);
             setWeatherInfo(resp);
         })();
-    }, []);
+    }, [cityName]);
 
     if(!weatherInfo) {
         return <Spinner />

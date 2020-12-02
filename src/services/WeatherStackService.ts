@@ -1,4 +1,6 @@
 import axios from "axios";
+import { GET_CITY_WEATHER } from "../helpers/cachedKeys";
+import { getCachedRequest } from "../helpers/getCachedRequest";
 
 const axiosInstance = axios.create({
     baseURL: 'http://api.weatherstack.com/'
@@ -14,7 +16,7 @@ const getParams = (query: any) => {
 }
 
 export const getCityWeather = async (city: string) => {
-    const resp = await axiosInstance.get('current', getParams({city}));
+    const resp = await getCachedRequest(GET_CITY_WEATHER(city), axiosInstance.get('current', getParams({city})));
     return resp.data;
 };
 
@@ -27,6 +29,13 @@ export const getCityWeather = async (city: string) => {
 }; */
 export const getCitiesWeather = async (cities: string[]) => {
     return Promise.all(cities.map(async city => {
-        return getCityWeather(city);
+        return getCityWeather(city)
+            .then(city => {
+                // it caches also different backend response names for cities like shanghai vs shanghai city
+                window.localStorage.setItem(GET_CITY_WEATHER(city.location.name.toLowerCase()), JSON.stringify({
+                    data: city
+                }));
+                return city;
+            });
     }));
 };
