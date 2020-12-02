@@ -7,11 +7,17 @@ import { CITY_DETAIL, HOME } from "../../helpers/appUrls";
 import { Icon } from "../../components/Icon/Icon";
 
 import HomeSvg from '../../assets/home.svg';
+import { HomeNavigationWrapper } from "./Router.s";
 
 export const Router = () => {
     return(
         <>
-            <Link to={HOME}><Icon svgLink={HomeSvg} /> Home </Link>
+            <Link to={HOME}>
+                <HomeNavigationWrapper>
+                    <Icon svgLink={HomeSvg} />
+                    <span>Home</span>
+                </HomeNavigationWrapper>
+            </Link>
             <SearchBox />
             <Switch>
                 <Route path={CITY_DETAIL(':cityName')}>
