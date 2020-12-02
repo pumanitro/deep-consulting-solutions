@@ -1,4 +1,4 @@
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import {CityDetail} from "../../pages/CityDetail/CityDetail";
 import {Home} from "../../pages/Home/Home";
 import React from "react";
@@ -7,7 +7,7 @@ import { CITY_DETAIL, HOME } from "../../helpers/appUrls";
 
 export const Router = () => {
     return(
-        <BrowserRouter>
+        <>
             <Link to={HOME}><span>Go home</span></Link>
             <SearchBox />
             <Switch>
@@ -18,6 +18,6 @@ export const Router = () => {
                     <Home />
                 </Route>
             </Switch>
-        </BrowserRouter>
+        </>
     )
 }
