@@ -11,6 +11,7 @@ export const CoreTheme = {
       background: {
         light: '#FFFFFF',
         mid: '#F8F9FE',
+        dark: '#dfe4fc',
       },
       border: {
         mid: '#A4A5AB',

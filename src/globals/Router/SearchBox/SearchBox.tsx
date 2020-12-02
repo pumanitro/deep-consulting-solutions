@@ -25,7 +25,7 @@ export const SearchBox = () => {
             {
                 searchedCity && (
                     <ResultBox>
-                        <span>{searchedCity.location.name} {searchedCity.current.temperature} °C</span>
+                        <span>{searchedCity.location.name} {searchedCity.current.temperature}°C</span>
                         <Link to={CITY_DETAIL(searchedCity.location.name)} onClick={() => setSearchedCity('')}>Details</Link>
                     </ResultBox>
                 )

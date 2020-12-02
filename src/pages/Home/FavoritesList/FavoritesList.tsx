@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {CITY_DETAIL} from "../../../helpers/appUrls";
 import {useFavoriteCities} from "../../../globals/FavoritesContext/FavoritesContext";
+import {CityList} from "../../../components/CityList/CityList";
 
 export const FavoritesList = () => {
     const {favorites} = useFavoriteCities();
@@ -10,16 +11,17 @@ export const FavoritesList = () => {
         return null;
     }
 
+    const cityComponents = favorites.map((cityName: string) => (
+        <>
+            <span>{cityName}</span>
+            <Link to={CITY_DETAIL(cityName)}>Details</Link>
+        </>
+    ));
+
     return (
         <div>
-            {
-                favorites.map((cityName: string) => (
-                    <div key={cityName}>
-                        <span>{cityName}</span>
-                        <Link to={CITY_DETAIL(cityName)}>Details</Link>
-                    </div>
-                ))
-            }
+            <h5>Your favorite cities</h5>
+            <CityList cities={cityComponents} />
         </div>
     )
 }
