@@ -2,21 +2,27 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ThemeProvider } from 'styled-components';
 import { FavoriteCitiesContextProvider } from './globals/FavoritesContext/FavoritesContext';
 import { GeoRedirection } from './globals/GeoRedirection/GeoRedirection';
+import { GlobalStyles } from './globals/GlobalStyles/GlobalStyles';
 import {Router} from "./globals/Router/Router";
+import { CoreTheme } from './globals/Themes/CoreTheme';
 
 function App() {
 
   return (
-      <BrowserRouter>
-          <GeoRedirection>
-              <ToastContainer />
-              <FavoriteCitiesContextProvider>
-                  <Router/>
-              </FavoriteCitiesContextProvider>
-          </GeoRedirection>
-      </BrowserRouter>
+      <ThemeProvider theme={CoreTheme}>
+          <BrowserRouter>
+              <GeoRedirection>
+                  <GlobalStyles />
+                  <ToastContainer />
+                  <FavoriteCitiesContextProvider>
+                      <Router/>
+                  </FavoriteCitiesContextProvider>
+              </GeoRedirection>
+          </BrowserRouter>
+      </ThemeProvider>
   );
 }
 
