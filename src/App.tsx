@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
+import { CenteredApps } from './globals/CenteredApp/CenteredApp';
 import { FavoriteCitiesContextProvider } from './globals/FavoritesContext/FavoritesContext';
 import { GeoRedirection } from './globals/GeoRedirection/GeoRedirection';
 import { GlobalStyles } from './globals/GlobalStyles/GlobalStyles';
@@ -15,11 +16,13 @@ function App() {
       <ThemeProvider theme={CoreTheme}>
           <BrowserRouter>
               <GeoRedirection>
-                  <GlobalStyles />
-                  <ToastContainer />
-                  <FavoriteCitiesContextProvider>
-                      <Router/>
-                  </FavoriteCitiesContextProvider>
+                  <CenteredApps>
+                      <GlobalStyles />
+                      <ToastContainer />
+                      <FavoriteCitiesContextProvider>
+                          <Router/>
+                      </FavoriteCitiesContextProvider>
+                  </CenteredApps>
               </GeoRedirection>
           </BrowserRouter>
       </ThemeProvider>

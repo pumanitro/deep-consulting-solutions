@@ -3,7 +3,7 @@ import {useSearchBox} from "./useSearchBox";
 import {Spinner} from "../../../components/Spinner/Spinner";
 import {CITY_DETAIL} from "../../../helpers/appUrls";
 import {Link} from "react-router-dom";
-import { SearchBoxWrapper } from './SearchBox.s';
+import { SearchBoxWrapper, StyledInput } from './SearchBox.s';
 import { Button } from '../../../components/Button/Button';
 
 export const SearchBox = () => {
@@ -12,10 +12,10 @@ export const SearchBox = () => {
 
     return (
         <SearchBoxWrapper>
-            <input placeholder="Find city..." value={city} onChange={(e) => setCity(e.target.value)} />
+            <StyledInput placeholder="Find city..." value={city} onChange={(e) => setCity(e.target.value)} />
             <Button onClick={() => searchCity(city)}> Search </Button>
             {
-                isLoading && <Spinner />
+                isLoading && <div><Spinner /></div>
             }
             {
                 searchedCity && (
