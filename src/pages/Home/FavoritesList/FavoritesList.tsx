@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {CITY_DETAIL} from "../../../helpers/appUrls";
 import {useFavoriteCities} from "../../../globals/FavoritesContext/FavoritesContext";
 import {CityList} from "../../../components/CityList/CityList";
+import _ from "lodash";
 
 export const FavoritesList = () => {
     const {favorites} = useFavoriteCities();
@@ -11,7 +12,7 @@ export const FavoritesList = () => {
         return null;
     }
 
-    const cityComponents = favorites.map((cityName: string) => (
+    const cityComponents = _.sortBy(favorites, 'location.name').map((cityName: string) => (
         <>
             <span>{cityName}</span>
             <Link to={CITY_DETAIL(cityName)}>Details</Link>
