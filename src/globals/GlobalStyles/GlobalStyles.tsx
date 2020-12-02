@@ -20,6 +20,11 @@ export const GlobalStyles = createGlobalStyle<any>`
   a {
     color: ${(props) => props.theme.colors.main.primary};
     text-decoration: none;
+    
+    &:hover {
+      cursor: pointer;
+    }
+    
   }
 
   h1 {
