@@ -5,7 +5,7 @@ import {CITY_DETAIL} from "../../../helpers/appUrls";
 import {Link} from "react-router-dom";
 
 export const SearchBox = () => {
-    const [isLoading, searchedCity, searchCity] = useSearchBox()
+    const [isLoading, searchedCity, searchCity, setSearchedCity] = useSearchBox()
     const [city, setCity] = useState('');
 
     return (
@@ -20,7 +20,7 @@ export const SearchBox = () => {
                     <div>
                         <span>{searchedCity.location.name}</span>
                         <span>{searchedCity.current.temperature}</span>
-                        <Link to={CITY_DETAIL(searchedCity.location.name)}>Details</Link>
+                        <Link to={CITY_DETAIL(searchedCity.location.name)} onClick={() => setSearchedCity('')}>Details</Link>
                     </div>
                 )
             }

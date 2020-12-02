@@ -36,6 +36,6 @@ export const useSearchBox = () => {
         })();
     };
 
-    return [isLoading, searchedCity, searchCity]
+    return [isLoading, searchedCity, searchCity, setSearchedCity]
 
 }
