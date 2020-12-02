@@ -20,9 +20,9 @@ export const FavoritesList = () => {
     ));
 
     return (
-        <div>
+        <>
             <h5>Your favorite cities</h5>
             <CityList cities={cityComponents} />
-        </div>
+        </>
     )
 }
