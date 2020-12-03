@@ -3,7 +3,7 @@ import { GET_CITY_WEATHER } from "../helpers/cachedKeys";
 import { getCachedRequest } from "../helpers/getCachedRequest";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://api.weatherstack.com/'
+    baseURL: 'https://api.weatherstack.com/'
 });
 
 const getParams = (query: any) => {
