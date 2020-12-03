@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import Geocode from "react-geocode";
 import { useHistory } from 'react-router-dom';
 import { CITY_DETAIL } from '../../helpers/appUrls';
@@ -17,7 +17,7 @@ export const GeoRedirection: FC<any> = ({children}) => {
         navigator.permissions.query({name:'geolocation'}).then(function(result) {
             result.onchange = function() {
                 navigator.geolocation.getCurrentPosition(async (position: any) => {
-                    if (result.state == 'granted') {
+                    if (result.state === 'granted') {
                         let lat = position.coords.latitude;
                         let lng = position.coords.longitude;
 
