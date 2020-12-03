@@ -1,6 +1,45 @@
-# Getting Started with Create React App
+## Main description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front End Software Engineer Test Assignment
+
+![Optional Text](./Home.png)
+![Optional Text](./Detail.png)
+
+## Technological stack
+
+- styled-components
+- typescript
+- cra
+- react
+- react-router
+- axios
+- Google Cloud API
+- WeatherStack Free API
+
+## Required .env variable to run an app
+
+```
+REACT_APP_WEATHERSTACK_API_KEY = XYZ
+REACT_APP_GOOGLE_MAP_API_KEY = XYZ
+```
+
+## Directories structure
+
+All code is under /src directory
+
+- assets - directory for static assets like .svg icons
+- components - reusable components in the wole application like button
+- global - components that are used once in a whole application to provide some functionality like RWD provider or layout
+- helpers - functions that can be reused in few places in whole application
+- pages - component responsible for given url adress like /home -> Home.tsx component
+
+## What I haven't done, but I am aware of, because app was to small for it or it was not required
+- redux/react-cache/apollo - global store management mechanism
+- prettier/eslint
+- RWD (Responsive Web Design)
+- more unit/integral/e2e tests
+- babel aliases
+- handle complex API Types (:any at some places)
 
 ## Available Scripts
 
