@@ -17,7 +17,7 @@ const ListElement = styled.div<{isEven : boolean}>`
 export const CityList: FC<CityListPropTypes> = ({cities}) => {
     return <>
         {
-            cities.map((city: React.ReactNode, index: number) => <ListElement isEven={index % 2 !== 0}>
+            cities.map((city: React.ReactNode, index: number) => <ListElement key={city + "-" + index} isEven={index % 2 !== 0}>
                 {city}
             </ListElement>)
         }
