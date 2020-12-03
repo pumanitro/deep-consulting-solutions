@@ -6,4 +6,9 @@ export const Button = styled.button`
     background-color: ${(props) => props.theme.colors.main.primary};
     color: ${(props) => props.theme.colors.utils.text.light};
     border: none;
+    
+    &:hover {
+        cursor: pointer;
+    }
+    
 `;

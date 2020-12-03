@@ -1,6 +1,8 @@
 import React, {FC, useState} from 'react';
 import { useLocalStorage } from '../../../helpers/useLocalStorage';
 import {useParams} from "react-router-dom";
+import {StyledSaveButton, StyledTextArea } from './Notes.s';
+import {Button} from "../../../components/Button/Button";
 
 
 export const Notes: FC<any> = () => {
@@ -19,10 +21,11 @@ export const Notes: FC<any> = () => {
     }
 
     return <div>
-        <textarea value={note} onChange={(e) => setNote(e.target.value)} />
+        <h4>Notes</h4>
+        <StyledTextArea value={note} onChange={(e) => setNote(e.target.value)} />
         <div>
-            <button onClick={saveNote}>Save</button>
-            <button onClick={clearValue}>Clear</button>
+            <StyledSaveButton onClick={saveNote}>Save</StyledSaveButton>
+            <Button onClick={clearValue}>Clear</Button>
         </div>
     </div>
 };

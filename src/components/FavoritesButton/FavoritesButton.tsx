@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import {useFavoriteCities} from "../../globals/FavoritesContext/FavoritesContext";
+import { StyledButton } from './FavoritesButton.s';
 
 type FavoritesButtonPropsType = {
     cityName: string;
@@ -17,8 +18,8 @@ export const FavoritesButton: FC<FavoritesButtonPropsType> = ({ cityName }) => {
     const hasCity = !!favorites.find((favourite: string) => favourite === cityName);
 
     if(hasCity) {
-        return <button onClick={removeFromFavorites}>[FILLED STAR] Remove from favorites</button>
+        return <StyledButton onClick={removeFromFavorites}>Remove from favorites</StyledButton>
     }
 
-    return <button onClick={addToFavorites}>[STAR] Add to favorites</button>
+    return <StyledButton onClick={addToFavorites}>Add to favorites</StyledButton>
 }

@@ -29,7 +29,7 @@ export const GlobalStyles = createGlobalStyle<any>`
 
   h1 {
     font-weight: 300;
-    font-size: 96px;
+    font-size: 64px;
     text-transform: none;
     letter-spacing: -0.015em;
     color: ${(props) => props.theme.colors.utils.text.dark};
